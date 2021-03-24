@@ -176,6 +176,12 @@ namespace rld
       return GELF_ST_TYPE (esym_.st_info);
     }
 
+    size_t
+    symbol::size () const
+    {
+      return esym_.st_size;
+    }
+
     int
     symbol::binding () const
     {

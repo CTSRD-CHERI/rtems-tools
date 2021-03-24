@@ -153,6 +153,11 @@ namespace rld
       int type () const;
 
       /**
+       * The symbol's length.
+       */
+      size_t size () const;
+
+      /**
        * The symbol's binding, ie local, weak, or global.
        */
       int binding () const;
