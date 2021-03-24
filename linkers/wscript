@@ -80,96 +80,10 @@ def build(bld):
                'RTEMS_RELEASE=\"%s\"' % (bld.env.RTEMS_RELEASE)]
 
     #
-    # Build the linker.
-    #
-    bld.program(target = 'rtems-ld',
-                source = ['rtems-ld.cpp'],
-                defines = defines,
-                includes = ['.'] + conf['includes'],
-                cflags = conf['cflags'] + conf['warningflags'],
-                cxxflags = conf['cxxflags'] + conf['warningflags'],
-                linkflags = conf['linkflags'],
-                use = modules)
-
-    #
-    # Build the ra linker.
-    #
-    bld.program(target = 'rtems-ra',
-                source = ['rtems-ra.cpp'],
-                defines = defines,
-                includes = ['.'] + conf['includes'],
-                cflags = conf['cflags'] + conf['warningflags'],
-                cxxflags = conf['cxxflags'] + conf['warningflags'],
-                linkflags = conf['linkflags'],
-                use = modules)
-
-    #
-    # Build the trace linker.
-    #
-    bld.program(target = 'rtems-tld',
-                source = ['rtems-tld.cpp'],
-                defines = defines,
-                includes = ['.'] + conf['includes'],
-                cflags = conf['cflags'] + conf['warningflags'],
-                cxxflags = conf['cxxflags'] + conf['warningflags'],
-                linkflags = conf['linkflags'],
-                use = modules)
-    bld.install_files('${PREFIX}/share/rtems/trace-linker',
-                      ['libc.ini',
-                       'libc-heap.ini',
-                       'rtems.ini',
-                       'rtems-api.ini',
-                       'rtems-posix.ini',
-                       'rtems-score.ini',
-                       'rtems-score-object.ini',
-                       'rtems-score-thread.ini',
-                       'rtems-score-threadq.ini',
-                       'rtems-score-heap.ini',
-                       'rtld-base.ini',
-                       'rtld-trace-buffer.ini',
-                       'rtld-print.ini'])
-
-    #
     # Build the symbols.
     #
-    bld.program(target = 'rtems-syms',
+    bld.program(target = 'freertos-syms',
                 source = ['rtems-syms.cpp'],
-                defines = defines,
-                includes = ['.'] + conf['includes'],
-                cflags = conf['cflags'] + conf['warningflags'],
-                cxxflags = conf['cxxflags'] + conf['warningflags'],
-                linkflags = conf['linkflags'],
-                use = modules)
-
-    #
-    # Build the RAP utility.
-    #
-    bld.program(target = 'rtems-rap',
-                source = ['rtems-rapper.cpp'],
-                defines = defines,
-                includes = ['.'] + conf['includes'],
-                cflags = conf['cflags'] + conf['warningflags'],
-                cxxflags = conf['cxxflags'] + conf['warningflags'],
-                linkflags = conf['linkflags'],
-                use = modules)
-
-    #
-    # Build the EXE information tool.
-    #
-    bld.program(target = 'rtems-exeinfo',
-                source = ['rtems-exeinfo.cpp'],
-                defines = defines,
-                includes = ['.'] + conf['includes'],
-                cflags = conf['cflags'] + conf['warningflags'],
-                cxxflags = conf['cxxflags'] + conf['warningflags'],
-                linkflags = conf['linkflags'],
-                use = modules)
-
-    #
-    # Build the address to line tool.
-    #
-    bld.program(target = 'rtems-addr2line',
-                source = ['rtems-addr2line.cpp'],
                 defines = defines,
                 includes = ['.'] + conf['includes'],
                 cflags = conf['cflags'] + conf['warningflags'],

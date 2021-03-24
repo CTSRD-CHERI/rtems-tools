@@ -33,12 +33,7 @@ import os.path
 import wafwindows
 
 subdirs = ['rtemstoolkit',
-           'config',
-           'linkers',
-           'misc',
-           'tester',
-           'tools/gdb/python',
-           'trace']
+           'linkers']
 
 def get_version(ctx):
     #
@@ -88,10 +83,10 @@ def configure(ctx):
         ctx.load("doxygen", tooldir = 'waf-tools')
     except:
         pass
-    ctx.env.RTEMS_VERSION, ctx.env.RTEMS_RELEASE = get_version(ctx)
+    ctx.env.RTEMS_VERSION, ctx.env.RTEMS_RELEASE = 0, 0
     ctx.start_msg('Version')
     ctx.end_msg('%s (%s)' % (ctx.env.RTEMS_RELEASE, ctx.env.RTEMS_VERSION))
-    ctx.env.C_OPTS = ctx.options.c_opts.split(',')
+    ctx.env.C_OPTS = []
     check_options(ctx, ctx.options.host)
     #
     # Common Python check.
