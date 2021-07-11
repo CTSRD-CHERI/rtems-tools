@@ -250,6 +250,8 @@ output_sym::operator ()(const rld::symbols::symtab::value_type& value)
     c.write_line ("asm(\"  .quad " + std::to_string(sym.type ()) + "\");");
     c.write_line ("#else");
     c.write_line ("asm(\"  .long " + sym.name () + "\");");
+    c.write_line ("asm(\"  .long " + std::to_string(sym.size ()) + "\");");
+    c.write_line ("asm(\"  .long " + std::to_string(sym.type ()) + "\");");
     c.write_line ("#endif");
   }
   else
